@@ -4,16 +4,16 @@ import os
 import commands
 import sys
 import subprocess
-import psutil
+#import psutil
 
 def hook_func():
     sys.stdin = open("/dev/tty")
     
-    cmdline = '\x00'.join(psutil.Process(os.getppid()).cmdline)
+    #cmdline = '\x00'.join(psutil.Process(os.getppid()).cmdline)
 
-    if '\x00--author' in cmdline:
-        print "skip the credential process on git-commit-checker"
-        return 0
+    #if '\x00--author' in cmdline:
+    #    print "skip the credential process on git-commit-checker"
+    #    return 0
     
     name = commands.getoutput("git config --get user.name")
     address = commands.getoutput("git config --get user.email")
